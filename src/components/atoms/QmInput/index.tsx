@@ -4,14 +4,18 @@ import { ColorScheme } from '../../../lib/color';
 
 interface QmInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label?: string;
+	inputStyle?: React.CSSProperties;
+	register?: any;
+	required?: boolean;
 }
 
 const QmInput: React.FC<QmInputProps> = (props) => {
+	const { register, required } = props;
 	return (
-		<React.Fragment>
+		<div style={props.style}>
 			{props.label && <InputLabel htmlFor={props.label}>{props.label}</InputLabel>}
-			<Input id={props.label} {...props}></Input>
-		</React.Fragment>
+			<Input id={props.label} style={props.inputStyle} {...props} ref={register && register({ required })}></Input>
+		</div>
 	);
 };
 
@@ -32,6 +36,7 @@ const Input = styled.input`
 	border-radius: 6px;
 	padding: 15px;
 	max-height: 50px;
+	width: 100%;
 `;
 
 export default QmInput;

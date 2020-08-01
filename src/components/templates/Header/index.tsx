@@ -20,7 +20,8 @@ const LogoImage = styled.img`
 const HeaderContainer = styled.div`
 	display: flex;
 	align-items: center;
-	padding: 20px 0;
+	padding: 20px;
+	justify-content: center;
 `;
 
 export default Header;

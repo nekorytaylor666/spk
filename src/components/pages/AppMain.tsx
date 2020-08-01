@@ -30,7 +30,6 @@ const AppMain = (props: AppMainProps) => {
 const AppWithSearchBarContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 `;
 
 const AppContainerWithSidebar = styled.div`
