@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { ColorScheme } from '../../../lib/color';
 
 interface QmInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-	label: string;
+	label?: string;
 }
 
 const QmInput: React.FC<QmInputProps> = (props) => {
 	return (
-		<div>
-			<InputLabel htmlFor={props.label}>{props.label}</InputLabel>
+		<React.Fragment>
+			{props.label && <InputLabel htmlFor={props.label}>{props.label}</InputLabel>}
 			<Input id={props.label} {...props}></Input>
-		</div>
+		</React.Fragment>
 	);
 };
 

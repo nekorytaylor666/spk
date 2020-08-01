@@ -2,10 +2,11 @@ import React, { ReactPropTypes } from 'react';
 import LoginPage from '../components/pages/Login';
 import SignUpPage from '../components/pages/SignUp';
 import AppMain from '../components/pages/AppMain';
+import NewProjectForm from '../components/templates/NewProjectForm/index';
 
 export interface RouteScheme {
 	path: string;
-	component: (props?: any) => JSX.Element;
+	component: any;
 	title?: string;
 	exact?: boolean;
 	routes?: RouteScheme[];
@@ -38,7 +39,7 @@ export const routes: RouteScheme[] = [
 			},
 			{
 				path: '/app/newproject',
-				component: () => <h1>new project</h1>,
+				component: NewProjectForm,
 			},
 			{
 				path: '/app/help',

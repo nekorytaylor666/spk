@@ -4,6 +4,7 @@ import { RouteScheme } from '../../router/config';
 import RouteWithSubRoutes from '../../router/RouteWithSubRoutes';
 import Sidebar from '../templates/Sidebar/index';
 import styled from 'styled-components';
+import Header from '../templates/Header/index';
 
 interface AppMainProps {
 	routes: RouteScheme[];
@@ -14,14 +15,23 @@ const AppMain = (props: AppMainProps) => {
 	return (
 		<AppContainerWithSidebar>
 			<Sidebar />
-			<Switch>
-				{props.routes.map((route, index) => (
-					<RouteWithSubRoutes key={index} {...route}></RouteWithSubRoutes>
-				))}
-			</Switch>
+			<AppWithSearchBarContainer>
+				<Header />
+				<Switch>
+					{props.routes.map((route, index) => (
+						<RouteWithSubRoutes key={index} {...route}></RouteWithSubRoutes>
+					))}
+				</Switch>
+			</AppWithSearchBarContainer>
 		</AppContainerWithSidebar>
 	);
 };
+
+const AppWithSearchBarContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
 
 const AppContainerWithSidebar = styled.div`
 	display: grid;
