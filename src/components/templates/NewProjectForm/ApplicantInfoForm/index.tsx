@@ -7,11 +7,10 @@ import { Horizontal } from '../../../atoms/Horizontal/index';
 import SizedBox from '../../../atoms/SizedBox/index';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
+import { QsSubmit } from '../../../atoms/QsSubmit/index';
 
 const ApplicantInfoForm = () => {
 	const { register, handleSubmit } = useForm();
-
-	const [applicant, setApplicant] = useState<ApplicantInfo>();
 
 	const onSubmit = (data: any) => console.log(data);
 
@@ -42,7 +41,10 @@ const ApplicantInfoForm = () => {
 						placeholder="Введите значение..."></QmInput>
 				</Horizontal>
 				<QmInput name="10" register={register} label="Веб-сайт организации (необязательно)" placeholder="Введите значение..."></QmInput>
-				<input type="submit" />
+				<Horizontal>
+					<div style={{ flex: 1 }}></div>
+					<QsSubmit style={{ flex: 1 }} value="Далее" />
+				</Horizontal>
 			</FormContainer>
 		</FormPane>
 	);
