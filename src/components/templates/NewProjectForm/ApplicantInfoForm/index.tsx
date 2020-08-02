@@ -10,37 +10,66 @@ import { useForm } from 'react-hook-form';
 import { QsSubmit } from '../../../atoms/QsSubmit/index';
 
 const ApplicantInfoForm = () => {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit } = useForm<ApplicantInfo>();
 
-	const onSubmit = (data: any) => console.log(data);
-
+	const onSubmit = handleSubmit((data) => {
+		console.log(data);
+	});
 	return (
 		<FormPane>
-			<FormContainer onSubmit={handleSubmit(onSubmit)}>
+			<FormContainer onSubmit={onSubmit}>
 				<Horizontal style={{ width: '100%' }}>
-					<QmInput name="1" register={register} style={{ flex: 3 }} label="Бин" placeholder="Введите значение..."></QmInput>
+					<QmInput name="bin" register={register} style={{ flex: 3 }} label="Бин" placeholder="Введите значение..." required></QmInput>
 					<SizedBox width={20}></SizedBox>
-					<QmInput name="2" register={register} style={{ flex: 4 }} label="Дата" placeholder="Введите значение..."></QmInput>
+					<QmInput name="regDate" register={register} style={{ flex: 4 }} label="Дата" placeholder="Введите значение..." required></QmInput>
 				</Horizontal>
-				<QmInput name="3" register={register} label="Наименование организации" placeholder="Введите значение..." required></QmInput>
-				<QmInput name="4" register={register} label="Юридический адрес компании" placeholder="Введите значение..."></QmInput>
-				<QmInput name="5" register={register} label="ФИО руководителя" placeholder="Введите значение..."></QmInput>
+				<QmInput name="orgName" register={register} label="Наименование организации" placeholder="Введите значение..." required></QmInput>
+				<QmInput
+					name="orgAddress"
+					register={register}
+					label="Юридический адрес компании"
+					placeholder="Введите значение..."
+					required></QmInput>
+				<QmInput name="ownerFullName" register={register} label="ФИО руководителя" placeholder="Введите значение..." required></QmInput>
 				<Horizontal>
-					<QmInput name="6" register={register} style={{ flex: 5 }} label="Ваша роль в проекте" placeholder="Введите значение..."></QmInput>
-					<SizedBox width={20}></SizedBox>
-					<QmInput name="7" register={register} style={{ flex: 3 }} label="Кол-во сотрудников" placeholder="Введите значение..."></QmInput>
-				</Horizontal>
-				<Horizontal>
-					<QmInput name="8" register={register} style={{ flex: 3 }} label="E-mail организации" placeholder="Введите значение..."></QmInput>
+					<QmInput
+						name="role"
+						register={register}
+						style={{ flex: 5 }}
+						label="Ваша роль в проекте"
+						placeholder="Введите значение..."
+						required></QmInput>
 					<SizedBox width={20}></SizedBox>
 					<QmInput
-						name="9"
+						name="employerCount"
+						register={register}
+						style={{ flex: 3 }}
+						label="Кол-во сотрудников"
+						placeholder="Введите значение..."
+						required></QmInput>
+				</Horizontal>
+				<Horizontal>
+					<QmInput
+						name="orgEmail"
+						register={register}
+						style={{ flex: 3 }}
+						label="E-mail организации"
+						placeholder="Введите значение..."
+						required></QmInput>
+					<SizedBox width={20}></SizedBox>
+					<QmInput
+						name="orgPhoneNumber"
 						register={register}
 						style={{ flex: 4 }}
 						label="Номер телефона организации"
-						placeholder="Введите значение..."></QmInput>
+						placeholder="Введите значение..."
+						required></QmInput>
 				</Horizontal>
-				<QmInput name="10" register={register} label="Веб-сайт организации (необязательно)" placeholder="Введите значение..."></QmInput>
+				<QmInput
+					name="orgSite"
+					register={register}
+					label="Веб-сайт организации (необязательно)"
+					placeholder="Введите значение..."></QmInput>
 				<Horizontal>
 					<div style={{ flex: 1 }}></div>
 					<QsSubmit style={{ flex: 1 }} value="Далее" />
