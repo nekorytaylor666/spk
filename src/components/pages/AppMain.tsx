@@ -1,23 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
 import { RouteScheme } from '../../router/config';
 import RouteWithSubRoutes from '../../router/RouteWithSubRoutes';
 import Sidebar from '../templates/Sidebar/index';
 import styled from 'styled-components';
 import Header from '../templates/Header/index';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-interface AppMainProps {
+interface AppMainProps extends RouteComponentProps<any> {
 	routes: RouteScheme[];
 }
 
-const AppMain = (props: AppMainProps) => {
+const AppMain: React.FC<AppMainProps> = (props) => {
 	console.log('routes:', props.routes);
 	return (
 		<AppContainerWithSidebar>
 			<Sidebar />
 			<AppWithSearchBarContainer>
 				<Header />
-				<Switch>
+
+				<Switch location={props.location}>
 					{props.routes.map((route, index) => (
 						<RouteWithSubRoutes key={index} {...route}></RouteWithSubRoutes>
 					))}
@@ -38,4 +40,4 @@ const AppContainerWithSidebar = styled.div`
 	height: 100vh;
 `;
 
-export default AppMain;
+export default withRouter(AppMain);

@@ -7,13 +7,18 @@ import { Horizontal } from '../../../atoms/Horizontal/index';
 import SizedBox from '../../../atoms/SizedBox/index';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import { QsSubmit } from '../../../atoms/QsSubmit/index';
+import { QmSubmit } from '../../../atoms/QmSubmit/index';
+import { useHistory } from 'react-router-dom';
 
 const ApplicantInfoForm = () => {
 	const { register, handleSubmit } = useForm<ApplicantInfo>();
-
+	let history = useHistory();
+	let dispatch = useDispatch();
 	const onSubmit = handleSubmit((data) => {
 		console.log(data);
+		history.push('/app/newproject/2');
+
+		dispatch(SubmitApplicantInfo(data));
 	});
 	return (
 		<FormPane>
@@ -72,7 +77,7 @@ const ApplicantInfoForm = () => {
 					placeholder="Введите значение..."></QmInput>
 				<Horizontal>
 					<div style={{ flex: 1 }}></div>
-					<QsSubmit style={{ flex: 1 }} value="Далее" />
+					<QmSubmit style={{ flex: 1 }} value="Далее" />
 				</Horizontal>
 			</FormContainer>
 		</FormPane>
@@ -88,8 +93,6 @@ const FormContainer = styled.form`
 const FormPane = styled.div`
 	box-shadow: 4px 4px 15px rgba(85, 85, 85, 0.2);
 	border-radius: 20px;
-	max-width: 700px;
-	width: 60%;
 `;
 
 export default ApplicantInfoForm;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ColorScheme } from '../../../lib/color';
-export const QsSubmit = styled.input.attrs({ type: 'submit' })`
+export const QmSubmit = styled.input.attrs({ type: 'submit' })`
 	border: none;
 	color: white;
 	background: ${ColorScheme.main.orange};

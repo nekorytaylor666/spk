@@ -34,7 +34,9 @@ export const NewProjectReducer = (state = initialState, action: NewProjectAction
 			state.docs = { ...action.payload };
 			break;
 		case 'PROJECT_GENERAL_INFO_SUBMIT':
-			state.general = { ...action.payload };
+			const newState = { ...state };
+			newState.general = { ...action.payload };
+			state = newState;
 			break;
 		default:
 			break;
